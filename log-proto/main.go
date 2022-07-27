@@ -7,6 +7,8 @@ import (
 	"os/user"
 	"strings"
 
+	"log-proto/utils"
+
 	"github.com/hpcloud/tail"
 )
 
@@ -36,7 +38,11 @@ func FindLogDir() string {
 
 //TODO Really Parse Lines
 func ParseLine(line string) {
-	fmt.Println(line)
+	if utils.IsEntity(line) == true {
+		utils.ParseEntity(line)
+	} else if utils.IsGameStart(line) == true {
+		fmt.Println("game started")
+	}
 }
 
 func main() {
