@@ -13,20 +13,24 @@ import (
 func FindLogDir() string {
 	var logdir string
 	var prefix string
+	var power string
 
 	user, err := user.Current()
 	prefix = "/home/" + user.Username + "/"
-	cmd := exec.Command("bash", "-c", "find | grep Power.log")
+	cmd := exec.Command("bash", "-c", "find | grep /Hearthstone/Logs")
 	cmd.Dir = prefix
 	output, err := cmd.CombinedOutput()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	split := strings.Split(strings.TrimSpace((string(output))), "/")
+	power = "/Power.log"
+
+	dirs := strings.Split(strings.TrimSpace((string(output))), "\n")
+	split := strings.Split(dirs[0], "/")
 
 	logdir = strings.Join(split[1:], "/")
-	logdir = prefix + logdir
+	logdir = prefix + logdir + power
 	return logdir
 }
 
