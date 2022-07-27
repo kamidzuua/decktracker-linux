@@ -1,0 +1,4 @@
+github.com/gihnius/monconn v0.0.0-20181108113819-3471306f4413 h1:fViJKKbTPER9+vDw/Kdg83tDHgz1d25kjL3JB5Re2uM=
+github.com/gihnius/monconn v0.0.0-20181108113819-3471306f4413/go.mod h1:YIhB9FYMpY8EB5u/0gPlW6BMyXvAfS0tyo3KSVobK1s=
+golang.org/x/net v0.0.0-20220726230323-06994584191e h1:wOQNKh1uuDGRnmgF0jDxh7ctgGy/3P4rYWQRVJD4/Yg=
+golang.org/x/net v0.0.0-20220726230323-06994584191e/go.mod h1:AaygXjzTFtRAg2ttMY5RMuhpJ3cNnI0XpyFJD1iQRSM=
