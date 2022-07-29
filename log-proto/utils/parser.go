@@ -77,22 +77,20 @@ func makeEntStruct(line string) EntityObject {
 	for _, value := range res {
 		var err error
 		curr := strings.Split(value, "=")
-		if curr[0] == "entityName" {
+
+
+		switch curr[0] {
+		case "entityName":
 			result.entityName = curr[1]
-		}
-		if curr[0] == "cardId" {
+		case "cardId":
 			result.cardId = curr[1]
-		}
-		if curr[0] == "id" {
+		case "id":
 			result.id, err = strconv.Atoi(curr[1])
-		}
-		if curr[0] == "player" {
+		case "player":
 			result.player, err = strconv.Atoi(curr[1])
-		}
-		if curr[0] == "zone" {
+		case "zone:
 			result.zone = curr[1]
-		}
-		if curr[0] == "zonePos" {
+		case "zonePos":
 			result.zonePos, err = strconv.Atoi(curr[1])
 		}
 
