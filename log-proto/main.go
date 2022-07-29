@@ -19,7 +19,7 @@ func FindLogDir() string {
 
 	user, err := user.Current()
 	prefix = "/home/" + user.Username + "/"
-	cmd := exec.Command("bash", "-c", "find | grep /Hearthstone/Logs")
+	cmd := exec.Command("bash", "-c", "find 2>/dev/null | grep /Hearthstone/Logs")
 	cmd.Dir = prefix
 	output, err := cmd.CombinedOutput()
 	if err != nil {

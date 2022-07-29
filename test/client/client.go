@@ -8,7 +8,7 @@ import (
 )
 
 func clientConn() net.Conn {
-	conn, _ := net.Dial("tcp", "127.0.0.1:1234")
+	conn, _ := net.Dial("tcp", "127.0.0.1:1119")
 	return conn
 }
 
@@ -46,7 +46,7 @@ func client(wg *sync.WaitGroup) {
 
 func Client_run() {
 	wg := &sync.WaitGroup{}
-	for i := 0; i <= 1000; i++ {
+	for i := 0; i <= 1; i++ {
 		wg.Add(1)
 		// time.Sleep(time.Second)
 		go client(wg)
