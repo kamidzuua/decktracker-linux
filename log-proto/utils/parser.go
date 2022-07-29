@@ -15,12 +15,30 @@ type EntityObject struct {
 	player     int
 }
 
+type Block struct {
+	startString string
+	content     []strings
+	endString   string
+}
+
+func GameMode(line string) string {
+	return "not implemented yet"
+}
+
 func IsEntity(line string) bool {
 	return strings.Contains(line, "entityName=")
 }
 
+func IsBlockStart(line string) bool {
+	return strings.Contains(line, "BLOCK_START")
+}
+
 func IsGameStart(line string) bool {
 	return strings.Contains(line, "CREATE_GAME")
+}
+
+func IsGameComplete(line string) bool {
+	return strings.Contains(line, "value=COMPLETE")
 }
 
 func ParseEntity(line string) {
@@ -29,6 +47,7 @@ func ParseEntity(line string) {
 
 func makeEntStruct(line string) EntityObject {
 	split := strings.Split(strings.Split(line, "[")[1], " ")
+	fmt.Println(split)
 	result := EntityObject{}
 	var parsed []string
 	var res []string

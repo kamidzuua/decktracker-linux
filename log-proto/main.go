@@ -15,7 +15,7 @@ import (
 func FindLogDir() string {
 	var logdir string
 	var prefix string
-	var power string
+	var logName string
 
 	user, err := user.Current()
 	prefix = "/home/" + user.Username + "/"
@@ -26,13 +26,13 @@ func FindLogDir() string {
 		log.Fatal(err)
 	}
 
-	power = "/Power.log"
+	logName = "/Power.log"
 
 	dirs := strings.Split(strings.TrimSpace((string(output))), "\n")
 	split := strings.Split(dirs[0], "/")
 
 	logdir = strings.Join(split[1:], "/")
-	logdir = prefix + logdir + power
+	logdir = prefix + logdir + logName
 	return logdir
 }
 
@@ -42,6 +42,12 @@ func ParseLine(line string) {
 		utils.ParseEntity(line)
 	} else if utils.IsGameStart(line) == true {
 		fmt.Println("game started")
+	} else if utils.IsGameComplete(line) {
+		fmt.Println("game complete")
+	} else if utils.IsBlockStart(line) {
+		fmt.Println(line)
+	} else {
+		fmt.Println(line)
 	}
 }
 
