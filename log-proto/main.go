@@ -37,7 +37,7 @@ func FindLogDir() string {
 }
 
 //TODO Really Parse Lines
-func ParseLine(line string) {
+func ParseLine(line string, inBlock *bool) {
 	if utils.IsEntity(line) == true {
 		utils.ParseEntity(line)
 	} else if utils.IsGameStart(line) == true {
@@ -45,16 +45,20 @@ func ParseLine(line string) {
 	} else if utils.IsGameComplete(line) {
 		fmt.Println("game complete")
 	} else if utils.IsBlockStart(line) {
-		fmt.Println(line)
+		*inBlock = true
+	} else if utils.IsBlockEnd(line) {
+		*inBlock = false
 	} else {
 		fmt.Println(line)
 	}
+
+	fmt.Println(*inBlock)
 }
 
 func main() {
 
 	powloc := FindLogDir()
-
+	inBlock := false
 	t, err := tail.TailFile(powloc, tail.Config{Follow: true})
 
 	if err != nil {
@@ -62,6 +66,6 @@ func main() {
 	}
 
 	for line := range t.Lines {
-		ParseLine(line.Text)
+		ParseLine(line.Text, &inBlock)
 	}
 }

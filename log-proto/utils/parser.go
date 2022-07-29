@@ -17,7 +17,7 @@ type EntityObject struct {
 
 type Block struct {
 	startString string
-	content     []strings
+	content     []string
 	endString   string
 }
 
@@ -31,6 +31,10 @@ func IsEntity(line string) bool {
 
 func IsBlockStart(line string) bool {
 	return strings.Contains(line, "BLOCK_START")
+}
+
+func IsBlockEnd(line string) bool {
+	return strings.Contains(line, "BLOCK_END")
 }
 
 func IsGameStart(line string) bool {
